@@ -3,35 +3,38 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { faMoon } from "@fortawesome/free-regular-svg-icons";
 
+
 const NavBar = () => {
-  const[navLink , setNavLink] = useState('hidden')
 
-  const toggleNavLink = () => {
-    setNavLink((pre) => pre === 'hidden' ? 'visible' : 'hidden')
-  }
+ const [navLink , setNavLink] = useState(true);
+
+ const toggleNavLink = () => {
+  setNavLink((pre) => pre === false ? true : false)
+ }
   return (
-    <header className="bg-slate-800 fixed top-0 left-0 w-full z-10">
-      <nav className="container h-14 flex justify-between items-center">
-        
-          <h1 className="font-bold text-3xl uppercase">logo</h1>
-
-        <div className={`${navLink} py-14 bg-slate-800 w-full absolute top-0 left-0 text-2xl md:block md:py-0 md:w-auto md:static ml-auto`}>
-          <ul className="flex flex-col text-center font-semibold gap-5 md:flex-row">
+    <header className="w-full fixed bg-slate-800">
+      <nav className="container h-14  flex justify-between items-center">
+        <h1 className="text-3xl font-bold shadow-sm">LOGO</h1>
+        <div className={`${navLink && 'hidden'} w-full bg-slate-800 py-14 absolute top-14 border-t-2 border-white h-screen left-0 md:block md:w-auto md:py-0 md:ml-auto md:static `}>
+          <ul className=" flex flex-col text-center gap-5 text-2xl md:flex-row">
             <li>Home</li>
-            <li>Contact</li>
-            <li>Support</li>
-            <li>Privicy</li>
+            <li>Service</li>
+            <li>Project</li>
+            <li>About</li>
           </ul>
-
-          <div>
-            <FontAwesomeIcon icon={faXmark} className="cursor-pointer text-3xl absolute top-[.7rem] right-4 md:hidden" onClick={toggleNavLink}/>
-          </div>
+          
         </div>
 
-        <div className="flex gap-5 text-2xl">
-          <FontAwesomeIcon icon={faMoon} className="cursor-pointer ml-4"/>
-
-          <FontAwesomeIcon icon={faBars} className="cursor-pointer md:hidden" onClick={toggleNavLink}/>
+        <div className="flex gap-5 text-2xl items-center">
+          <FontAwesomeIcon icon={faMoon} className="ml-4"/>
+          {
+            navLink == true ?
+            (<FontAwesomeIcon icon={faBars} className="md:hidden" onClick={toggleNavLink}/>)
+            : 
+            (<FontAwesomeIcon icon={faXmark} onClick={toggleNavLink} className=" md:hidden text-3xl"/>)
+          }
+          
+          
         </div>
       </nav>
     </header>
