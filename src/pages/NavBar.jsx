@@ -10,7 +10,7 @@ const NavBar = () => {
     setNavLink((pre) => pre === 'hidden' ? 'visible' : 'hidden')
   }
   return (
-    <header className="bg-slate-800 relative top-0 left-0 w-full z-10">
+    <header className="bg-slate-800 fixed top-0 left-0 w-full z-10">
       <nav className="container h-14 flex justify-between items-center">
         
           <h1 className="font-bold text-3xl uppercase">logo</h1>
@@ -24,7 +24,7 @@ const NavBar = () => {
           </ul>
 
           <div>
-            <FontAwesomeIcon icon={faXmark} className="cursonr-pointer text-3xl absolute top-[.7rem] right-4 md:hidden" onClick={toggleNavLink}/>
+            <FontAwesomeIcon icon={faXmark} className="cursor-pointer text-3xl absolute top-[.7rem] right-4 md:hidden" onClick={toggleNavLink}/>
           </div>
         </div>
 
